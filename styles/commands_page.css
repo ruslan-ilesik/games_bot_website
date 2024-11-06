@@ -1,0 +1,193 @@
+.command-card {
+    width: 100%; /* Ensures card uses full width of grid column */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-width: 400px;
+    font-family: headers-font;
+  }
+
+.commands-list {
+display: grid;
+gap: 20px; /* Space between command cards */
+padding: 20px;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive columns */
+}
+  
+.option-list .option {
+border-left: 4px solid var(--highlight-color);
+margin-left: 1rem;
+padding-left: 1rem;
+}
+
+.headers-font {
+font-family: headers-font;
+}
+
+.text-highlight {
+color: var(--highlight-color);
+}
+
+.command-card{
+border-radius: 0.5rem;
+padding: 1rem;
+}
+
+.markdown-content h1 {
+font-size: 1.75rem; /* Adjust as needed */
+margin-top: 1rem;
+}
+
+.markdown-content h2 {
+font-size: 1.5rem;
+margin-top: 0.75rem;
+}
+
+.markdown-content h3 {
+font-size: 1.25rem;
+margin-top: 0.5rem;
+}
+
+.markdown-content p {
+font-size: 1rem;
+margin: 0.5rem 0;
+}
+
+.markdown-content a {
+color: #60a5fa;
+text-decoration: underline;
+}
+
+.markdown-content a:hover {
+color: #3b82f6;
+}
+
+.markdown-content li {
+margin: 0.5rem 0;
+}
+
+  
+  .commands-container {
+    display: flex; /* Flexbox layout for the search and commands */
+  }
+  
+  .search-bar-container {
+    width: 250px; /* Fixed width for the search bar */
+    padding: 10px; /* Padding for the search bar */
+    top: 0; /* Stick to the top of the viewport */
+    height: 100%; /* Full height of the viewport */
+    overflow-y: hidden; /* Allow scrolling if needed */
+  }
+  
+  .search-bar {
+    
+    padding: 10px; /* Padding for input */
+    border: 1px solid #444; /* Input border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #555; /* Input background color */
+    color: #fff; /* Input text color */
+  }
+
+  .fixed-search{
+    position: fixed;
+    width: 250px; /* Full width for input */
+    padding: 10px;
+    }
+  
+  .commands-list {
+    flex: 1; /* Take remaining space */
+    padding: 20px; /* Padding for the commands list */
+
+  }
+  
+  .command-card {
+    margin-bottom: 20px; /* Space between command cards */
+  }
+  
+  @media (max-width: 1024px) {
+    .commands-container {
+      flex-direction: column; /* Stack vertically on small screens */
+      height: auto; /* Allow natural height */
+    }
+  
+    .search-bar-container {
+      width: 100%; /* Full width on small screens */
+      position: relative; /* Reset sticky positioning */
+      max-height: none; /* No max-height */
+      height: unset;
+    }
+
+    .search-bar{
+        position: relative;
+        width: 100%;
+    }
+
+    .fixed-search{
+        position: relative;
+        width: 100%;
+    }
+  
+    .commands-list {
+      height: auto; /* Allow natural height on small screens */
+      overflow-y: auto; /* Allow scrolling for commands list */
+      gap: 5px; /* Space between command cards */
+        padding: 5px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    }
+
+
+  }
+    
+
+  .category-filter {
+    margin-top: 20px;
+  }
+  
+  .category-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .category-item {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .category-item.selected {
+    background-color: var(--btn-color);
+    border-color: var(--highlight-color);
+  }
+
+
+@keyframes append-animate {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;	
+}
+}  
+/* Command card base style */
+.command-card-container {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+/* Fade in and out classes */
+.command-card-container.fade-in {
+    opacity: 1;
+    visibility: visible;
+}
+
+.command-card-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.command-card{
+    animation: 0.3s append-animate ease;
+}

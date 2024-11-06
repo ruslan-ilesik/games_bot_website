@@ -1,0 +1,4 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "AutoPreview.serverURL": "http://localserver:3000"
+}

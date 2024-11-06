@@ -1,0 +1,240 @@
+
+.fade-in {
+    opacity: 1;
+  }
+  
+.fade-out {
+    opacity: 0;
+}
+
+.reviews {
+    margin: 0 auto;
+  }
+  
+.review-icon {
+width: 75px; /* Adjust icon size */
+height: auto; /* Maintain aspect ratio */
+margin-left: auto;
+margin-right: auto;
+border-width: 5px 5px 8px 8px;
+border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+border: solid white;
+border-color: white;
+}
+
+.info-section-content {
+padding: 15px; /* Add padding for better spacing */
+}
+
+.small-ratings i {
+color: #FFD700; /* Gold color for stars */
+}
+
+.reviews-container{
+    max-width: max(50%, 300px);
+    width:  max(50%, 300px);
+}
+  
+
+/* Top icon styles */
+.top-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    max-width: 256px;
+}
+
+.text-highlight{
+    color: var(--highlight-color);
+}
+
+/* Header styles */
+.header {
+    font-family: headers-font;
+}
+
+h1.header {
+    font-size: 3.0em;
+}
+
+h2.header {
+    font-size: 1.5em;
+}
+
+/* Info counter styles */
+.info-counter {
+    text-align: center;
+    padding: 10px;
+}
+
+.info-counter span {
+    font-size: 1.5em;
+    font-family: counters-font;
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.info-counter h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.info-section{
+    margin-top: 200px;
+}
+
+
+.info-section-content{
+ margin-top: 20px;
+}
+
+/* Container for the counters */
+.counters-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive column layout */
+    justify-content: space-between; /* Ensure the counters take up the full space */
+    width: 100%; /* Make sure the container fills the available width */
+}
+
+.custom-image {
+    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+    height: auto; /* Maintains the aspect ratio */
+    border: solid white;
+    border-color: white;
+    float:left; 
+    border-width: 6px 6px 10px 10px;
+    border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+    transform: rotate(-2deg);
+    max-height: 500px;
+    max-width: min(350px,70vw);
+}
+
+.info-section h1{
+    font-family: headers-font;
+}   
+
+.invite-section {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+  }
+  
+.add-bot-btn {
+margin: 10px;
+background-color: var(--btn-color); /* or your chosen theme color */
+color: white;
+border-radius: 10px;
+transition: background-color 0.3s;
+font-size: 1.2rem;
+padding: 12px 24px;
+}
+
+.add-bot-btn:hover {
+background-color: var(--btn-hover-color); /* Darker shade for hover */
+}
+
+/* Responsive styles */
+
+/* Large screen (bigger font size, reduce icon space) */
+@media only screen and (min-width: 1400px) {
+    h1.header {
+        font-size: 3.2em;
+    }
+
+    p.header {
+        font-size: 1.2em;
+    }
+
+    .info-counter span {
+        font-size: 2.0em;
+    }
+
+    .top-icon {
+        margin-left: 50px; /* Less space between image and text */
+    }
+}
+
+/* Medium screens (1024px - 1400px) */
+@media only screen and (max-width: 1400px) {
+    .counters-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    h1.header {
+        font-size: 3.0em;
+    }
+
+    p.header {
+        font-size: 1.2em;
+    }
+
+    .info-counter span {
+        font-size: 2.0em;
+    }
+
+    .info-section h1{
+        font-size: 3.5em;
+    }
+
+    .top-icon {
+        margin-left: 40px;
+    }
+}
+
+/* Small screens, switch to 2x2 grid */
+@media only screen and (max-width: 1024px) {
+    .counters-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 rows with 2 counters */
+    }
+
+    h1.header {
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    p2.header {
+        font-size: 0.8em;
+    }
+
+    .info-counter span {
+        font-size: 2em;
+    }
+
+    .info-section h1{
+        font-size: 3.5em;
+    }
+
+    .top-icon {
+        display: none; /* Hide the icon on small screens */
+    }
+}
+
+/* Very small screens (500px or below) */
+@media only screen and (max-width: 500px) {
+    .counters-container {
+        grid-template-columns: 1fr; /* 1 counter per row */
+    }
+
+    h1.header {
+        font-size: 2.0em;
+        text-align: center;
+    }
+
+    p2.header {
+        font-size: 0.5em;
+    }
+
+    .info-counter span {
+        font-size: 1.5em;
+    }
+
+    .info-section h1{
+        font-size: 2.5em;
+    }
+
+    .info-section-content{
+        width: auto;
+        margin-left: 0;
+    }
+}

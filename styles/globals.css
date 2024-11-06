@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+    --block-bg-color : #23272A;
+    --highlight-color : lightblue;
+    --btn-color : rgb(13, 110, 253);
+    --btn-hover-color : rgb(11, 94, 215);
+
+}
+
+.darker-block{
+    background-color: var( --block-bg-color);
+}
+
+.inline-container{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.premium-user,
+.premium-user a{
+    color:gold;
+}
+
+.current-page,
+.current-page a{
+    text-decoration: none !important;
+    font-weight: 700;
+    color: var(--highlight-color) !important;
+}
+
+/* Fonts */
+@font-face {
+    font-family: headers-font;
+    src: url("/fonts/SecularOne-Regular.ttf");
+}
+
+@font-face {
+    font-family: counters-font;
+    src: url("/fonts/Rowdies-Regular.ttf");
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+body{
+    overflow-y: hidden  ;
+}
