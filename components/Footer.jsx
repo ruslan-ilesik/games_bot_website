@@ -3,8 +3,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer darker-block text-white py-4">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    <footer className="footer darker-block text-white py-4" >
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center footer-div" >
         <div className="flex items-center">
           <img src="/img/ilesik.webp" alt="Ilesik Icon" className="w-8 h-8 mr-2" />
           <span>Made by ilesik</span>

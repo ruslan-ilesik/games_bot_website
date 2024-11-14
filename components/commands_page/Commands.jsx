@@ -53,7 +53,7 @@ const Commands = ({ navbarSizeRef }) => {
   if (error) return <div>Error: {error}</div>;
   if (commands.length === 0) return <div>Loading...</div>;
 
-  const filteredCommands = commands.map(command => {
+  let filteredCommands = commands.map(command => {
     const matchesSearchTerm = command.command.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategories = selectedCategories.size === 0 || 
                               command.categories.some(category => selectedCategories.has(category));
@@ -64,16 +64,23 @@ const Commands = ({ navbarSizeRef }) => {
   });
 
   const handleSearchChange = (e) => {
-    setFadeOut(true); // Trigger fade-out
-  
     const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm); // Immediately update the search term
+    setFadeOut(true); // Trigger fade-out effect immediately
   
+    // After fade-out completes, apply the filter and trigger fade-in
     setTimeout(() => {
-      setSearchTerm(newSearchTerm); // Update search term after fade-out completes
-      setFadeOut(false); // Trigger fade-in
-    }, 300); // Adjust delay to match fade-out duration
+      setFadeOut(false); // Trigger fade-in after the animation duration
+  
+      // Now apply the filter logic after fade-out
+      filteredCommands = commands.filter((command) => {
+        const matchesSearchTerm = command.command.name.toLowerCase().includes(newSearchTerm.toLowerCase());
+        const matchesCategories = selectedCategories.size === 0 || 
+                                  command.categories.some(category => selectedCategories.has(category));
+        return matchesSearchTerm && matchesCategories;
+      });
+    }, 300); // Delay to match the fade-out animation duration
   };
-
   const handleCategoryClick = (category) => {
     setFadeOut(true); // Trigger fade-out
     setTimeout(() => {

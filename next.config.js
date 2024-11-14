@@ -13,6 +13,10 @@ const nextConfig = {
             source: '/api/:path*', // Forward all requests starting with /api
             destination: 'http://localhost:8080/api/:path*', // Replace with your backend's URL and port
           },
+          {
+            source: '/auth/:path*', // Forward all requests starting with /api
+            destination: 'http://localhost:8080/auth/:path*', // Replace with your backend's URL and port
+          },
         ];
     },
 }

@@ -12,11 +12,11 @@ import {
 } from '@nextui-org/react';
 
 const GlobalNavbar = ({ navbarSizeRef }) => {
-  const isLoggedIn = false;
   const navbarRef = useRef(null);
-  const navbarHeight = isLoggedIn ? 70 : 55;
+  const navbarHeight = 55;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isNavbarVisible, setIsNavbarVisible] = useState(true); // State for navbar visibility
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [user, setUser] = useState(null);
   const path = typeof window !== 'undefined' ? window.location.pathname : '';
 
   const menuItems = [
@@ -26,47 +26,52 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
     { name: 'Invite Bot!', href: 'https://discord.com/api/oauth2/authorize?client_id=729046239181668397&permissions=139586817088&scope=bot%20applications.commands', icon: 'fa-robot' },
   ];
 
-  // Update navbarSizeRef and bottom position of the navbar on scroll or resize
+  // Fetch user data from the Discord endpoint
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('/api/discord/get-display-user-data');
+        if (response.status === 403) {
+          setUser(null); // User is not logged in
+        } else if (response.ok) {
+          const userData = await response.json();
+          setUser({
+            name: userData.username,
+            avatarUrl: `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        setUser(null);
+      }
+    };
+    fetchUserData();
+  }, []);
+
   const updateNavbarBottomPosition = () => {
     if (navbarRef.current) {
       const bottomPosition = navbarRef.current.getBoundingClientRect().bottom;
       if (navbarSizeRef) {
-        navbarSizeRef.current = bottomPosition > 0? bottomPosition : 0;
+        navbarSizeRef.current = bottomPosition > 0 ? bottomPosition : 0;
       }
     }
   };
 
   useEffect(() => {
-    // Set initial navbar bottom position
     updateNavbarBottomPosition();
-
-    // Track resize events to recalculate navbar position
-    //const handleResize = () => {
-    //  updateNavbarBottomPosition();
-    //};
-
-    //window.addEventListener('resize', handleResize);
-
-    //return () => {
-   //   window.removeEventListener('resize', handleResize);
-   // };
   }, []);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      // Toggle navbar visibility based on scroll direction
       setIsNavbarVisible(currentScrollY < lastScrollY || currentScrollY === 0);
       lastScrollY = currentScrollY;
-      updateNavbarBottomPosition(); // Update navbarSizeRef on scroll
+      updateNavbarBottomPosition();
     };
 
-    ///window.addEventListener('scroll', handleScroll);
-    //return () => {
-    //  window.removeEventListener('scroll', handleScroll);
-   // };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -77,8 +82,8 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
         padding: '0',
         margin: '0',
         width: '100vw',
-        transition: 'transform 0.3s ease', // Smooth transition for hiding/showing
-        transform: isNavbarVisible ? 'translateY(0)' : 'translateY(-100%)', // Move navbar out of view when hidden
+        transition: 'transform 0.3s ease',
+        transform: isNavbarVisible ? 'translateY(0)' : 'translateY(-100%)',
       }}
       fixed="top"
       maxWidth="full"
@@ -86,7 +91,6 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
       onMenuOpenChange={setIsMenuOpen}
     >
       <div className="container-fluid flex justify-between items-center w-full">
-        {/* Mobile menu toggle button */}
         <NavbarContent className="sm:hidden">
           <NavbarMenuToggle
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -101,7 +105,6 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           />
         </NavbarContent>
 
-        {/* Left side navigation */}
         <NavbarContent justify="start" className="hidden sm:flex gap-4">
           {menuItems.map((item, index) => (
             <NavbarItem key={index} className={(item.href === path ? 'current-page ' : '') + (item.href === '/premium' ? 'premium-user ' : '')}>
@@ -113,23 +116,23 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           ))}
         </NavbarContent>
 
-        {/* Right side login/logout */}
         <NavbarContent justify="end" className="flex gap-4">
-          {isLoggedIn ? (
+          {user ? (
             <NavbarItem>
               <Link href="/dashboard">
                 <img
-                  height="50"
-                  src="https://example.com/avatar.jpg"
+                  src={user.avatarUrl}
                   className="profile_pic"
                   alt="User Avatar"
                 />
-                <span className="premiumClass">JohnDoe</span>
+                <Link href="/dashboard" color="foreground" style={{paddingRight:"10px"}}>
+                  <span style={{ marginLeft: '8px'},{paddingTop:"8px"}}>{user.name}</span>
+                </Link>
               </Link>
             </NavbarItem>
           ) : (
             <NavbarItem>
-              <Link href="[[ discord_login_url ]]" color="foreground">
+              <Link href="api/login-with-discord-redirect" color="foreground">
                 <span className="fa fa-sign-in"></span>
                 <span style={{ marginLeft: '8px' }}>Login</span>
               </Link>
@@ -137,7 +140,6 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           )}
         </NavbarContent>
 
-        {/* Collapsible mobile menu */}
         <NavbarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={index} className={item.href === path ? 'current-page' : ''}>

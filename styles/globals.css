@@ -22,6 +22,17 @@
     justify-content: space-between;
 }
 
+.footer-div{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+@media only screen and (max-width: 500px) {
+    .footer-div{
+        padding-left: unset;
+        padding-right: unset;
+    } 
+}
+
 .premium-user,
 .premium-user a{
     color:gold;
@@ -32,6 +43,13 @@
     text-decoration: none !important;
     font-weight: 700;
     color: var(--highlight-color) !important;
+}
+
+.profile_pic{
+    height:50px;
+    border-radius: 50%;
+    padding-right: 10px;
+    padding-top: 6px;
 }
 
 /* Fonts */
