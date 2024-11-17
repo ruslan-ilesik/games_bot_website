@@ -11,6 +11,9 @@ import {
   Link,
 } from '@nextui-org/react';
 
+import { usePremium } from './PrmeiumContext';
+
+
 const GlobalNavbar = ({ navbarSizeRef }) => {
   const navbarRef = useRef(null);
   const navbarHeight = 55;
@@ -73,6 +76,7 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  const { isPremium } = usePremium(); 
 
   return (
     <Navbar
@@ -126,7 +130,7 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
                   alt="User Avatar"
                 />
                 <Link href="/dashboard" color="foreground" style={{paddingRight:"10px"}}>
-                  <span style={{ marginLeft: '8px'},{paddingTop:"8px"}}>{user.name}</span>
+                  <span style={{ marginLeft: '8px'},{paddingTop:"8px"}}  className={`user-name ${isPremium ? 'premium-user' : ''}`}>{user.name}</span>
                 </Link>
               </Link>
             </NavbarItem>

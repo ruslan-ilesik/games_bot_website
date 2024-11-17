@@ -4,6 +4,7 @@
   import {NextUIProvider} from "@nextui-org/react";
   import NoSsr from "../components/NoSsr";
   import {ThemeProvider as NextThemesProvider} from "next-themes";
+  import {PremiumProvider} from "../components/PrmeiumContext";
 
 
 
@@ -12,12 +13,14 @@
         <html lang="en">
           <body>
             <NoSsr> 
-              <NextUIProvider>
-                <NextThemesProvider attribute="class" defaultTheme="dark">
-                {/* Layout UI */}
-                  {children}
-                </NextThemesProvider> 
-              </NextUIProvider>
+              <PremiumProvider>
+                <NextUIProvider>
+                  <NextThemesProvider attribute="class" defaultTheme="dark">
+                  {/* Layout UI */}
+                    {children}
+                  </NextThemesProvider> 
+                </NextUIProvider>
+              </PremiumProvider>
             </NoSsr>
           </body>
         </html>
