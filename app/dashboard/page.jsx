@@ -3,7 +3,7 @@ import React, {useRef} from 'react';
 import RootLayout from '../layout';
 import GlobalNavbar from '../../components/GlobalNavbar';
 import Footer from '../../components/Footer';
-import { usePremium } from '../../components/PrmeiumContext';
+import { usePremium } from '../../components/PremiumContext';
 
 
 const PremiumPage = () => {

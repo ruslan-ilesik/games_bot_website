@@ -1,6 +1,6 @@
 import '../../styles/premium_page.css';
 
-import { usePremium } from '../PrmeiumContext';
+import { usePremium } from '../PremiumContext';
 
 const PremiumFeaturesTable = () => {
   const gamesData = [
@@ -49,7 +49,7 @@ const PremiumFeaturesTable = () => {
     ));
 
   return (
-    <div className="premium-page">
+    <div className="premium-page fonts-assign">
       {/* Intro Section */}
       <div className="intro-container">
         <h1 className="text-highlight text-center">Support GamesBot!</h1>

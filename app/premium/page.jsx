@@ -4,7 +4,7 @@ import RootLayout from '../layout';
 import GlobalNavbar from '../../components/GlobalNavbar';
 import Footer from '../../components/Footer';
 import PremiumFeaturesTable from '../../components/premium/PremiumFeaturesTable';
-import { usePremium } from '../../components/PrmeiumContext';
+import { usePremium } from '../../components/PremiumContext';
 import '../../styles/premium_page.css';
 
 const PremiumPage = () => {
