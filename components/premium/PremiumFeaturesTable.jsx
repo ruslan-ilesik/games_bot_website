@@ -82,15 +82,15 @@ const PremiumFeaturesTable = () => {
           </tr>
           <tbody>
             <tr>
-              <td colSpan="3" className="py-3 px-4 text-center text-lg font-bold text-white">
-                Games Access
-              </td>
+              <td className="py-3 px-4 text-center text-lg">Games Access</td>
+              <td className="py-3 px-4 text-left font-medium text-white"></td>
+              <td className="py-3 px-4 text-center"></td>
             </tr>
             {renderRows(gamesData)}
             <tr>
-              <td colSpan="3" className="py-3 px-4 text-center text-lg font-bold text-white">
-                Dashboard Features
-              </td>
+              <td className="py-3 px-4 text-center text-lg"> Dashboard Features</td>
+              <td className="py-3 px-4 text-left font-medium text-white"></td>
+              <td className="py-3 px-4 text-center"></td>
             </tr>
             {renderRows(dashboardFeatures)}
           </tbody>
