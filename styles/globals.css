@@ -39,6 +39,12 @@
 .current-page a{
     text-decoration: none !important;
     font-weight: 700;
+
+}
+
+.current-page:not(.premium-user),
+.current-page:not(.premium-user) a:not(.premium-user) span
+{
     color: var(--highlight-color) !important;
 }
 

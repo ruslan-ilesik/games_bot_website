@@ -19,7 +19,7 @@ const PremiumPage = () => {
       <div className="container mx-auto mt-8 mb-16 px-4 text-center">
         <div className="intro-container">
         {isPremium ? (
-          <h1 className="text-highlight text-center" style={{fontSize:"1.5em;"}}>
+          <h1 className="text-highlight text-center" style={{fontSize:"1.5em"}}>
             You already have premium. Thank you for your support! 😊
           </h1>
         ) : (

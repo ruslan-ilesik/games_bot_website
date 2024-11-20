@@ -147,7 +147,7 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
         <NavbarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={index} className={item.href === path ? 'current-page' : ''}>
-              <Link href={item.href} color="foreground" className="w-full">
+              <Link href={item.href} color="foreground" className={"w-full "+(item.href === path ? 'current-page ' : '') + (item.href === '/premium' ? 'premium-user ' : '')}>
                 <span className={`fa-solid ${item.icon}`}></span>
                 <span style={{ marginLeft: '8px' }}>{item.name}</span>
               </Link>

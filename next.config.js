@@ -11,15 +11,15 @@ const nextConfig = {
         return [
           {
             source: '/api/:path*', // Forward all requests starting with /api
-            destination: 'http://localhost:8080/api/:path*', // Replace with your backend's URL and port
+            destination: 'http://localhost:8080/api/:path*',
           },
           {
-            source: '/auth/:path*', // Forward all requests starting with /api
-            destination: 'http://localhost:8080/auth/:path*', // Replace with your backend's URL and port
+            source: '/auth/:path*', // Forward all requests starting with /auth
+            destination: 'http://localhost:8080/auth/:path*', 
           },
           {
-            source: '/action/:path*', // Forward all requests starting with /api
-            destination: 'http://localhost:8080/action/:path*', // Replace with your backend's URL and port
+            source: '/action/:path*', // Forward all requests starting with /action
+            destination: 'http://localhost:8080/action/:path*',
           },
         ];
     },
