@@ -1,0 +1,80 @@
+
+:root {
+    --alt-row-bg-color: #24262a;
+    --alt-row-bg-color2: #1d1e20;
+    --premium-table-bg-color: #1c1d20;
+}
+
+.fonts-assign{
+    font-family: headers-font;
+}
+
+
+.premium-features-table-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;        
+    width: 100%;             
+
+  }
+  
+  .premium-features-table {
+    max-width: 900px;       
+    width: 100%;       
+   
+  }
+
+  .gap-row {
+    height: 5px; /* Adjust the height for the gap as needed */
+    background-color: rgb(10,10,10);
+  }
+
+
+  .premium-page {
+    padding: 20px;
+  }
+  
+  .wide-text {
+    max-width: 800px; /* Make the text block wider */
+    margin: 0 auto; /* Center align */
+  }
+  
+  .intro-container,
+  .benefits-container {
+    margin-bottom: 40px; /* Add spacing between sections */
+  }
+  
+  .intro-container h1,
+  .benefits-container h2 {
+    font-family: headers-font;
+    font-size: 2.5rem; /* Make headings bigger */
+    color: var(--highlight-color, #ffffff);
+    margin-bottom: 20px; /* Add spacing below headings */
+  }
+  
+  .intro-container p,
+  .benefits-container p {
+    font-size: 1.2rem; /* Increase text size */
+    line-height: 1.8; /* Improve readability */
+    color: white;
+    text-align: center;
+    margin-bottom: 15px; /* Add spacing between paragraphs */
+  }
+  
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 15px 5px rgba(21, 128, 61, 0.4);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.6);
+    }
+  }
+  
+  .pulse-button {
+    animation: pulse 3s ease-in-out 10s infinite; 
+  }
+  

@@ -1,4 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "AutoPreview.serverURL": "http://localserver:3000"
+  "AutoPreview.serverURL": "http://localserver:3000",
+  "sarif-viewer.connectToGithubCodeScanning": "off"
 }

@@ -11,6 +11,7 @@
     --btn-hover-color : rgb(11, 94, 215);
 }
 
+
 .darker-block{
     background-color: var( --block-bg-color);
 }
@@ -32,17 +33,20 @@
     } 
 }
 
-.premium-user,
-.premium-user a{
-    color:gold;
-}
 
+/* order of current page and premium user rules is important!!!*/
 .current-page,
 .current-page a{
     text-decoration: none !important;
     font-weight: 700;
     color: var(--highlight-color) !important;
 }
+
+.premium-user,
+.premium-user a{
+    color:gold !important;
+}
+
 
 .profile_pic{
     height:50px;
