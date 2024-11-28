@@ -22,6 +22,10 @@
     justify-content: space-between;
 }
 
+.fonts-assign{
+    font-family: headers-font;
+}
+
 .footer-div{
     padding-left: 10px;
     padding-right: 10px;
@@ -80,3 +84,8 @@ body{
     overflow-y: hidden  ;
     min-height: 100vh;
 }
+
+.pulse-button {
+    animation: pulse 3s ease-in-out 10s infinite; 
+  }
+  

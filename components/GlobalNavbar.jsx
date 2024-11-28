@@ -32,7 +32,7 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
 
   useEffect(() => {
     console.log(user);
-    if (path == "/dashboard" && user == null) {
+    if (path == "/dashboard" && user === null) {
       window.location.href = "/"; // Redirect to home page if the user is not logged in.
     }
   }, [user, path]); 
@@ -115,9 +115,10 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
                     src={user.avatarUrl}
                     className="profile_pic"
                     alt="User Avatar"
+                    style={{"display": user.avatar?"inherit":"none"}}
                   />
                   <Link href="/dashboard" className={("/dashboard" === path ? 'current-page ' : '')}  color="foreground" style={{paddingRight:"10px"}}>
-                    <span style={{ marginLeft: '8px'},{paddingTop:"8px"}}  className={`user-name ${isPremium ? 'premium-user' : ''}`}>{user.name}</span>
+                    <span style={{ marginLeft: '8px',paddingTop:"8px"}}  className={`user-name ${isPremium ? 'premium-user' : ''}`}>{user.name}</span>
                   </Link>
                 </Link>
               </NavbarItem>

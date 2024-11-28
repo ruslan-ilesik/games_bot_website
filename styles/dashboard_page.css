@@ -1,0 +1,23 @@
+.inverted-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+  }
+
+
+  .logout-btn {
+    background-color: #e53e3e; /* Red background */
+    color: white; /* White text */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c53030; /* Darker red on hover */
+  }
+  
+  .logout-btn:focus {
+    outline: none;
+  }
+  

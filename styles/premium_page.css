@@ -5,10 +5,6 @@
     --premium-table-bg-color: #1c1d20;
 }
 
-.fonts-assign{
-    font-family: headers-font;
-}
-
 
 .premium-features-table-container {
     display: flex;
@@ -72,9 +68,5 @@
     100% {
       box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.6);
     }
-  }
-  
-  .pulse-button {
-    animation: pulse 3s ease-in-out 10s infinite; 
   }
   

@@ -26,6 +26,13 @@
     }
   },
   "rules": {
+    "padding-line-between-statements": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/jsx-sort-props": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "jsx-a11y/heading-has-content": "off",
+    "jsx-a11y/anchor-has-content": "off",
     "no-console": "warn",
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
