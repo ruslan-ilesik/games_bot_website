@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import { usePremium } from '../../components/PremiumContext';
 import DashboardHeader from "../../components/dashboard_page/DashboardHeader";
 import HistoryTable from '../../components/dashboard_page/HistoryTable';
+import ActivityGraphs from '../../components/dashboard_page/ActivityGraphs';
 
 const PremiumPage = () => {
   const navbarSizeRef = useRef(null);
@@ -15,6 +16,7 @@ const PremiumPage = () => {
       <GlobalNavbar navbarSizeRef={navbarSizeRef}/>
       <DashboardHeader/>
       <HistoryTable/>
+      <ActivityGraphs/>
       <Footer/>
     </RootLayout>
   );

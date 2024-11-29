@@ -20,4 +20,85 @@
   .logout-btn:focus {
     outline: none;
   }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1rem;
+  }
   
+  @media (min-width: 769px) {
+    .filters {
+      flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+      justify-content: flex-start; /* Align items horizontally */
+    }
+    .filters > div {
+      flex: 0 1 auto; /* Allow each filter to size naturally */
+      min-width: 200px; /* Ensure minimum width for readability */
+    }
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+  }
+  
+  @media (min-width: 640px) {
+    .pagination {
+      flex-direction: row; /* Horizontal layout on larger screens */
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .pagination > div {
+      margin: 0 1rem; /* Add spacing between sections */
+    }
+  }
+  .table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+  
+  .history-table {
+    min-width: 600px; /* Set a minimum width for your table */
+  }
+
+  
+  
+
+  .charts-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the charts horizontally */
+    gap: 20px; /* Space between charts */
+    padding-top: 10px;
+  }
+  
+.chart-item {
+  width: 100%;
+  max-width: 600px;
+  min-width: min(100%, 500px);
+  margin: 10px;
+  text-align: center; 
+  background-color: rgba(255, 255, 255, 0.091) ;
+  border-radius: 7px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+    
+    
+  @media (min-width: 768px) {
+    .chart-item {
+      width: 30%;
+    }
+  }
+
+  .doughnut-div canvas{
+    margin: 0 auto;
+  }

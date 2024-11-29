@@ -18,8 +18,9 @@ const PremiumFeaturesTable = () => {
   ];
 
   const dashboardFeatures = [
-    { feature: 'Games history', basic: '✔', premium: '✔' },
-    { feature: 'Reports by day', basic: '10 days', premium: 'Unlimited' },
+    { feature: 'View games history', basic: '✔', premium: '✔' },
+    { feature: 'Export games history', basic: '✘', premium: '✔'  },
+    { feature: 'Reports by day', basic: '10 days', premium: '30 days' },
   ];
 
   const renderCell = (value) => {
