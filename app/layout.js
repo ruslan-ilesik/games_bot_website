@@ -6,26 +6,27 @@
   import {ThemeProvider as NextThemesProvider} from "next-themes";
   import {PremiumProvider} from "../components/PremiumContext";
   import {UserDataProvider} from "../components/UserDataProvider";
-
+  import Metadata from '../components/Metadata';
 
 
   export default function RootLayout({ children }) {
       return (
-        <html lang="en">
-          <body>
+          <html lang="en">
             <NoSsr> 
-              <UserDataProvider>
-                <PremiumProvider>
-                  <NextUIProvider>
-                    <NextThemesProvider attribute="class" defaultTheme="dark">
-                    {/* Layout UI */}
-                      {children}
-                    </NextThemesProvider> 
-                  </NextUIProvider>
-                </PremiumProvider>
-              </UserDataProvider>
+              <Metadata/>
+              <body>
+                  <UserDataProvider>
+                    <PremiumProvider>
+                      <NextUIProvider>
+                        <NextThemesProvider attribute="class" defaultTheme="dark">
+                        {/* Layout UI */}
+                          {children}
+                        </NextThemesProvider> 
+                      </NextUIProvider>
+                    </PremiumProvider>
+                  </UserDataProvider>
+              </body>
             </NoSsr>
-          </body>
-        </html>
+          </html>
       )
-    }
+    }   
