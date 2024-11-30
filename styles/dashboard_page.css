@@ -59,7 +59,7 @@
   }
   
   .history-table {
-    min-width: 600px; /* Set a minimum width for your table */
+    transition: all 10s;
   }
 
   
@@ -102,3 +102,148 @@
   .doughnut-div canvas{
     margin: 0 auto;
   }
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  
+  .animate-fade {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .loading {
+    animation: fadeOut 0.5s ease-in-out;
+    opacity: 0.5;
+  }
+  
+
+  .achievements-report {
+    padding: 20px;
+
+  }
+  
+  .report-title {
+    text-align: center;
+  }
+  
+  .section-title {
+    margin-top: 20px;
+
+  }
+  
+  .achievements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .achievements-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto)); /* Adjust minmax for fixed card size */
+    justify-content: left; /* Center-align cards when there's extra space */
+    gap: 20px;
+  }
+  
+  .achievement-card {
+    width: 300px; /* Static width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.091);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .achievement-card.locked {
+    opacity: 0.6;
+  }
+  
+  .achievement-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .achievement-info {
+    margin-top: 10px;
+  }
+  
+  .achievement-name {
+    font-size: 1.2em;
+  }
+  
+  .achievement-description {
+    margin: 5px 0;
+  }
+  
+  .unlocked-date {
+    font-size: 0.9em;
+  }
+  
+  .emoji img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+  
+  .loading-message,
+  .error-message {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 1.5em;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+
+  .logout-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+  }
+  
+  .logout-button {
+    background-color: #ff4d4d; /* Red color */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+  }
+  
+  .logout-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(255, 77, 77, 0.5);
+  }
+  

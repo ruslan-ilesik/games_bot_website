@@ -4,15 +4,12 @@ import { usePremium } from '../PremiumContext';
 import { saveAs } from 'file-saver';
 
 function titleCase(str) {
-    var splitStr = str.toLowerCase().split(' ');
-    for (var i = 0; i < splitStr.length; i++) {
-        // You do not need to check if i is larger than splitStr length, as your for does that for you
-        // Assign it back to the array
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-    }
-    // Directly return the joined string
-    return splitStr.join(' '); 
- }
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 const HistoryTable = () => {
   const [orderOptions, setOrderOptions] = useState([]);
@@ -24,18 +21,15 @@ const HistoryTable = () => {
     parseInt(localStorage.getItem("rowsPerPage"), 10) || 10
   );
   const [currentPage, setCurrentPage] = useState(
-        parseInt(localStorage.getItem("currentPage"), 10) || 0
-    );
+    parseInt(localStorage.getItem("currentPage"), 10) || 0
+  );
   const [maxPage, setMaxPage] = useState(0);
   const [records, setRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [customPageInput, setCustomPageInput] = useState(""); // For manual page input
-  const { isPremium } = usePremium(); 
-
+  const [customPageInput, setCustomPageInput] = useState("");
+  const { isPremium } = usePremium();
 
   useEffect(() => {
-    // Fetch filter options from the API
     const fetchOptions = async () => {
       try {
         const response = await fetch("/api/dashboard/get-history-table-order-options");
@@ -58,39 +52,32 @@ const HistoryTable = () => {
   }, [selectedOrder]);
 
   useEffect(() => {
-    // Save selected filters to localStorage
     localStorage.setItem("selectedOrder", selectedOrder);
     localStorage.setItem("rowsPerPage", rowsPerPage);
     localStorage.setItem("currentPage", currentPage);
   }, [selectedOrder, rowsPerPage, currentPage]);
 
-
   useEffect(() => {
-    // Fetch table data from the API whenever filters or page changes
     const fetchTableData = async () => {
       setIsLoading(true);
-      setError("");
       try {
         const response = await fetch(
           `/api/dashboard/get-history-table?sort=${selectedOrder}&rows=${rowsPerPage}&page=${currentPage}`
         );
-
-        if (!response.ok) {
-          if (response.status === 400) throw new Error("Invalid request parameters");
-          throw new Error("Failed to fetch table data");
-        }
+        if (!response.ok) throw new Error("Failed to fetch table data");
 
         const data = await response.json();
-        setRecords(data.records);
-        setMaxPage(parseInt(data.page_cnt, 10) - 1);
+        setTimeout(() => {
+          setRecords(data.records);
+          setMaxPage(parseInt(data.page_cnt, 10) - 1);
 
-        if (data.records.length === 0 && currentPage > data.page_cnt - 1) {
-          setCurrentPage(data.page_cnt - 1);
-        }
+          if (data.records.length === 0 && currentPage > data.page_cnt - 1) {
+            setCurrentPage(data.page_cnt - 1);
+          }
+          setIsLoading(false);
+        }, 500); // Match with animation duration
       } catch (error) {
         console.error("Error fetching table data:", error);
-        setError(error.message);
-      } finally {
         setIsLoading(false);
       }
     };
@@ -98,13 +85,10 @@ const HistoryTable = () => {
     fetchTableData();
   }, [selectedOrder, rowsPerPage, currentPage]);
 
-   // Handle Export Button Click
-   const handleExport = async () => {
+  const handleExport = async () => {
     try {
       const response = await fetch("/api/dashboard/get-games-history-cvs");
       if (!response.ok) throw new Error("Failed to fetch CSV");
-
-      // Trigger file download
       const blob = await response.blob();
       saveAs(blob, "games-history.csv");
     } catch (error) {
@@ -113,67 +97,68 @@ const HistoryTable = () => {
   };
 
   const handlePageChange = (page) => {
-    if (page >= 1 && page <= maxPage + 1) { // Ensure 1-based logic for users
-      setCurrentPage(page - 1); // Store zero-based index
-      setCustomPageInput(""); // Reset custom input field
+    if (page >= 1 && page <= maxPage + 1) {
+      setCurrentPage(page - 1);
+      setCustomPageInput("");
     }
   };
 
   const handleCustomPageSubmit = (e) => {
     e.preventDefault();
-    const page = parseInt(customPageInput, 10); // User-visible number
+    const page = parseInt(customPageInput, 10);
     if (!isNaN(page) && page >= 1 && page <= maxPage + 1) {
-      setCurrentPage(page - 1); // Convert to zero-based index
+      setCurrentPage(page - 1);
     }
   };
-  
+
   return (
-<div className="fonts-assign content-center flex flex-col justify-center items-center">
-    <h1 className=" text-highlight text-center" style={{ fontSize: '2.3em' }}>Games history</h1>
-    <div className=" darker-block p-4 m-4"style={{'maxWidth':'calc(100vw - 20px)'}}>
+    <div className="fonts-assign content-center flex flex-col justify-center items-center">
+      <h1 className="text-highlight text-center" style={{ fontSize: "2.3em" }}>
+        Games history
+      </h1>
+      <div className="darker-block p-4 m-4" style={{ maxWidth: "calc(100vw - 20px)"}}>
         <div className="history-table p-4 rounded-md">
-            <div className="filters flex flex-wrap gap-4 mb-4 fonts-assign">
-            {/* Sort Filter */}
+          <div className="filters flex flex-wrap gap-4 mb-4 fonts-assign">
             <div className="w-full sm:w-auto">
-                <label className="flex flex-col sm:flex-row sm:items-center space-x-2">
+              <label className="flex flex-col sm:flex-row sm:items-center space-x-2">
                 <span className="text-highlight font-semibold">Sort by:</span>
                 <select
-                    className="px-2 py-1 bg-black text-highlight border border-gray-500 rounded-md"
-                    value={selectedOrder}
-                    onChange={(e) => setSelectedOrder(e.target.value)}
+                  className="px-2 py-1 bg-black text-highlight border border-gray-500 rounded-md"
+                  value={selectedOrder}
+                  onChange={(e) => setSelectedOrder(e.target.value)}
                 >
-                    {orderOptions.map((label, index) => (
+                  {orderOptions.map((label, index) => (
                     <option key={index} value={label}>
-                        {label}
+                      {label}
                     </option>
-                    ))}
+                  ))}
                 </select>
-                </label>
+              </label>
             </div>
 
-            {/* Rows Per Page */}
             <div className="w-full sm:w-auto">
-                <label className="flex flex-col sm:flex-row sm:items-center space-x-2">
+              <label className="flex flex-col sm:flex-row sm:items-center space-x-2">
                 <span className="text-highlight font-semibold">Rows per page:</span>
                 <select
-                    className="px-2 py-1 bg-black text-highlight border border-gray-500 rounded-md"
-                    value={rowsPerPage}
-                    onChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
+                  className="px-2 py-1 bg-black text-highlight border border-gray-500 rounded-md"
+                  value={rowsPerPage}
+                  onChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
                 >
-                    {rowsOptions.map((rows, index) => (
+                  {rowsOptions.map((rows, index) => (
                     <option key={index} value={rows}>
-                        {rows}
+                      {rows}
                     </option>
-                    ))}
+                  ))}
                 </select>
-                </label>
+              </label>
             </div>
+
             {isPremium ? (
               <div className="w-full sm:w-auto">
                 <button
                   onClick={handleExport}
                   className="text-white rounded-md px-4 py-1"
-                  style={{'backgroundColor':'var(--btn-color)'}}
+                  style={{ backgroundColor: "var(--btn-color)" }}
                 >
                   Export CSV
                 </button>
@@ -188,45 +173,53 @@ const HistoryTable = () => {
                 </button>
               </div>
             )}
-            </div>
-    </div>
+          </div>
+        </div>
 
-    <div className="table-container overflow-x-auto">
-    <table className="history-table table-auto w-full text-left border-collapse min-w-[600px] max-w-[1000px]">
-        <thead>
-        <tr>
-            <th className="p-2 border border-gray-700">Game</th>
-            <th className="p-2 border border-gray-700">Result</th>
-            <th className="p-2 border border-gray-700">Datetime</th>
-            <th className="p-2 border border-gray-700">Time Played</th>
-        </tr>
-        </thead>
-        <tbody>
-        {records.map((record, index) => (
-            <tr
-            key={index}
-            className={`${
-                index % 2 === 0 ? "bg-alt-row-bg-color" : "bg-alt-row-bg-color2"
-            } text-gray-300`}
-            >
-            <td className="p-2 border border-gray-700">{titleCase(record.game_name.replace('_',' '))}</td>
-            <td className="p-2 border border-gray-700">{record.result}</td>
-            <td className="p-2 border border-gray-700">
-                {new Date(record.start_time + " UTC").toLocaleString(undefined, {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                })}
-            </td>
-            <td className="p-2 border border-gray-700">{record.time_played}</td>
-            </tr>
-        ))}
-        </tbody>
-    </table>
-    </div>
+        <div
+          className={`table-container overflow-x-auto ${
+            isLoading ? "loading" : "animate-fade"
+          }`}
+        >
+          <table className="history-table table-auto w-full text-left border-collapse min-w-[600px] max-w-[1000px]">
+            <thead>
+              <tr>
+                <th className="p-2 border border-gray-700">Game</th>
+                <th className="p-2 border border-gray-700">Result</th>
+                <th className="p-2 border border-gray-700">Datetime</th>
+                <th className="p-2 border border-gray-700">Time Played</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.map((record, index) => (
+                <tr
+                  key={index}
+                  className={`${
+                    index % 2 === 0 ? "bg-alt-row-bg-color" : "bg-alt-row-bg-color2"
+                  } text-gray-300`}
+                >
+                  <td className="p-2 border border-gray-700">
+                    {titleCase(record.game_name.replace("_", " "))}
+                  </td>
+                  <td style={
+                    {color: (record.result == 'WIN' ? 'limegreen' : (record.result == 'DRAW' ? 'yellow' : (record.result == 'UNKNOWN'? '' : 'red')))}
+                  } className="p-2 border border-gray-700">{record.result}</td>
+                  <td className="p-2 border border-gray-700">
+                    {new Date(record.start_time + " UTC").toLocaleString(undefined, {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </td>
+                  <td className="p-2 border border-gray-700">{record.time_played}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
 
 

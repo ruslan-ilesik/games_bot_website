@@ -129,7 +129,7 @@ const DashboardHeader = () => {
             className="logout-btn p-2 rounded-lg ml-4"
             onClick={() => (window.location.href = '/action/patreon/logout')}
           >
-            Log out
+            Logout
           </button>
         )}
       </div>
