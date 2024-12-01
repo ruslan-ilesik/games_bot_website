@@ -7,7 +7,7 @@
   import {PremiumProvider} from "../components/PremiumContext";
   import {UserDataProvider} from "../components/UserDataProvider";
   import Metadata from '../components/Metadata';
-
+  import PrivacyPopup from '../components/PrivacyPopup';
 
   export default function RootLayout({ children }) {
       return (
@@ -15,6 +15,7 @@
             <NoSsr> 
               <Metadata/>
               <body>
+                <PrivacyPopup/>
                   <UserDataProvider>
                     <PremiumProvider>
                       <NextUIProvider>
