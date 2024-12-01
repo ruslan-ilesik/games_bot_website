@@ -23,8 +23,7 @@ const PrivacyPopup = () => {
           <div className="p-6 rounded-lg shadow-xl max-w-md w-full border-4 border-blue-600">
             <h2 className="text-xl font-semibold mb-4">Terms and Conditions & Privacy Policy</h2>
             <p className="text-sm mb-4">
-                This website is using cookies!
-              By using this website, you agree to our{' '}
+              This website uses cookies to enhance your experience. We do not use cookies for marketing purposes or share data with third parties. By using this website, you agree to our{' '}
               <a
                 href="/documents/privacy_policy.pdf"
                 target="_blank"
