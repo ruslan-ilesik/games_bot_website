@@ -55,7 +55,7 @@ const AgainstPutinPopup = ({ children }) => {
               We see that you are trying to access this website from Russia!
             </h2>
             <p className="text-lg mb-6">
-              By using this website, you openly declare your support for Ukraine's sovereignty, territorial integrity, and oppose the bloody war instigated by Russia. You stand against Putin's regime and the injustice inflicted upon Ukraine. The world stands for peace, freedom, and human rights.
+              By using this website, you openly declare your support for Ukraine&apos;s sovereignty, territorial integrity, and oppose the bloody war instigated by Russia. You stand against Putin&apos;s regime and the injustice inflicted upon Ukraine. The world stands for peace, freedom, and human rights.
             </p>
             <p className="text-3xl">Glory to Ukraine!</p>
             <br />
