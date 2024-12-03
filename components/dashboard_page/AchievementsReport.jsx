@@ -33,8 +33,8 @@ const AchievementsReport = () => {
   }
 
   return (
-    <div className="fonts-assign    "> 
-        <h1 className="headers-font text-highlight text-center" style={{ fontSize: "2.3em" }}>
+    <div className="fonts-assign"> 
+        <h1 className="headers-font text-highlight text-center" style={{ fontSize: "2.3em", marginTop: "50px"  }}>
             Achievements Report
       </h1>
 

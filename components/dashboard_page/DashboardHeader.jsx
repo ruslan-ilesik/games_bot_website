@@ -177,7 +177,7 @@ const DashboardHeader = () => {
         {/* Last Played */}
         <div className="block darker-block p-4 rounded-lg flex-grow max-w-sm" style={{ height: "min-content" }}>
           <p className="">
-            <p className="text-bold" style={{ fontSize: "1.6em" }}>
+            <p className="text-bold" style={{ fontSize: "1.6em"}}>
               Last time played
             </p>
             <br />

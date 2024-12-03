@@ -168,7 +168,7 @@
 
     return (
       <div className='fonts-assign'>
-        <h1 className="headers-font text-highlight text-center" style={{ fontSize: '2.3em' }}>Activity Overview</h1>
+        <h1 className="headers-font text-highlight text-center" style={{ fontSize: '2.3em', marginTop: "50px"  }}>Activity Overview</h1>
         <div className='darker-block pb-4 mb-4'>
         <div className="charts-container">
           <div className="chart-item doughnut-div">
