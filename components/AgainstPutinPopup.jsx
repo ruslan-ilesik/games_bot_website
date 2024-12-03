@@ -8,6 +8,10 @@ const AgainstPutinPopup = ({ children }) => {
     // Check if the user has already accepted the popup (using localStorage)
     const doesNotSupportPutin = localStorage.getItem('doesNotSupportPutin');
     if (!doesNotSupportPutin) {
+      if (window.location.hostname == "localhost"){
+        setIsLoading(false);
+        return;
+      }
       // Fetch the user's IP information using ipinfo.io
       fetch('https://ipinfo.io/json')
         .then((response) => response.json())

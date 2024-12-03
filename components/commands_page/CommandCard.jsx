@@ -54,7 +54,7 @@ const countArguments = (options) => {
   return count;
 };
 
-const CommandCard = ({ command }) => {
+const CommandCard = ({ handleCategoryClick, command, selectedCategories }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [optionsHeight, setOptionsHeight] = useState(0);
@@ -87,9 +87,13 @@ const CommandCard = ({ command }) => {
         <div className="categories mb-4 flex flex-wrap items-center">
           <h4 className="text-lg font-semibold mr-2">Categories:</h4>
           {command.categories.map((category, idx) => (
-            <span key={idx} className="bg-gray-700 text-white rounded-full px-4 py-1 mr-2 text-md" style={{marginBottom: '5px'}}>
-              {capitalizeFirstLetter(category)}
-            </span>
+              <span onClick={()=>handleCategoryClick(category)} 
+              key={idx} 
+              className="bg-gray-700 text-white rounded-full px-4 py-1 mr-2 text-md" 
+              style={{marginBottom: '5px',cursor:'pointer', 'background-color' : (selectedCategories.has(category)? 'var(--btn-color)':'')}}>
+                {capitalizeFirstLetter(category)}
+              </span>
+
           ))}
         </div>
       )}
@@ -139,7 +143,8 @@ const CommandCard = ({ command }) => {
                 h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-2" {...props} />,
                 p: ({ node, ...props }) => <p className="text-base my-2" {...props} />,
                 a: ({ node, ...props }) => (
-                  <a className="text-blue-400 underline hover:text-blue-300" {...props} />
+                  <a   target="_blank"
+                  rel="noopener noreferrer" className="text-blue-400 underline hover:text-blue-300" {...props} />
                 ),
                 li: ({ node, ...props }) => <li className="list-disc ml-5" {...props} />,
                 br: () => <br className="my-2" />
