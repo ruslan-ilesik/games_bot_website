@@ -6,18 +6,16 @@
 }
 
 
-.premium-features-table-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;        
-    width: 100%;             
-
+.premium-features-table-container {    
+    width: 100%;   
+    box-sizing: border-box;          
+    overflow-x: auto;
   }
   
   .premium-features-table {
     max-width: 900px;       
     width: 100%;       
-   
+    margin: 0 auto;
   }
 
   .gap-row {
@@ -28,6 +26,12 @@
 
   .premium-page {
     padding: 20px;
+  }
+
+  @media (max-width:500px) {
+    .premium-page{
+      padding: unset;
+    }
   }
   
   .wide-text {
