@@ -19,8 +19,8 @@ const PrivacyPopup = () => {
   return (
     <>
       {showPopup && (
-        <div className="fixed bottom-0 left-0 w-full darker-block fonts-assign bg-opacity-50 flex justify-center items-center z-50">
-          <div className="p-6 rounded-lg shadow-xl max-w-md w-full border-4 border-blue-600">
+        <div className="fixed bottom-0 left-0 w-full fonts-assign bg-opacity-50 flex justify-left items-center z-50">
+          <div className="p-6 rounded-lg darker-block shadow-xl m-[25px] max-w-xl w-full border-4 border-blue-600">
             <h2 className="text-xl font-semibold mb-4">Terms and Conditions & Privacy Policy</h2>
             <p className="text-sm mb-4">
               This website uses cookies to enhance your experience. We do not use cookies for marketing purposes or share data with third parties. By using this website, you agree to our{' '}

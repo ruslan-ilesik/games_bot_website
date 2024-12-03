@@ -50,17 +50,17 @@ const RatingCarousel = () => {
   return (
     <div className="mx-auto px-4 pt-5">
       <div className="info-section mb-10 w-full">
-        <h1 className="text-6xl mb-4 text-center headers-font" data-aos="zoom-out-up" data-aos-duration="1500">
+        <h1 className="text-6xl mb-4 text-center headers-font mb-[35px]" data-aos="zoom-out-up" data-aos-duration="1500">
           Your Ultimate Discord Entertainment Solution!
         </h1>
-        <div className="flex flex-col md:flex-row items-start w-full justify-center">
+        <div className="flex flex-col md:flex-row items-start w-full justify-center mt-[15px]">
           <div className="md:w-1/2 w-full flex justify-center items-center">
-            <div data-aos="fade-up-right" data-aos-duration="1500" className="relative darker-block reviews-container">
+            <div data-aos="fade-up-right" data-aos-duration="1500" className="relative darker-block reviews-container review-icon">
               {reviews.length > 0 && (
                 <div className={`carousel-item ${fade ? 'fade-out' : 'fade-in'}`} style={{ transition: 'opacity 0.5s ease-in-out' }}>
                   <div className="info-section-content text-center">
                     <div className="center">
-                      <img className="review-icon" src={reviews[currentIndex].icon_path} alt={reviews[currentIndex].username} />
+                      <img className="center-image-review" src={reviews[currentIndex].icon_path} alt={reviews[currentIndex].username} />
                     </div>
                     <div className="col-8">
                       <p className="font-bold">{reviews[currentIndex].username}</p>

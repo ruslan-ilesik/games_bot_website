@@ -1,7 +1,9 @@
 'use client'; // Important for Next.js 13's app directory
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { PremiumProvider } from "./PremiumContext";
+import { NextUIProvider } from "@nextui-org/react";
 // Create context
 const UserContext = createContext(null);
 
@@ -45,5 +47,14 @@ export const UserDataProvider = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={user}>  
+    <PremiumProvider>
+    <NextUIProvider>
+      <NextThemesProvider attribute="class" defaultTheme="dark">
+        {/* Layout UI */}
+        {children}
+      </NextThemesProvider>
+    </NextUIProvider>
+  </PremiumProvider>
+</UserContext.Provider>;
 };
