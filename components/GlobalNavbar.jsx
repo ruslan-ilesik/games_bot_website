@@ -24,10 +24,10 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
   const path = typeof window !== 'undefined' ? window.location.pathname : '';
 
   const menuItems = [
-    { name: 'Home', href: '/', icon: 'fa-house' },
-    { name: 'Commands', href: '/commands', icon: 'fa-terminal' },
-    { name: 'Premium', href: '/premium', icon: 'fa-crown' },
-    { name: 'Invite Bot!', href: 'https://discord.com/api/oauth2/authorize?client_id=729046239181668397&permissions=139586817088&scope=bot%20applications.commands', icon: 'fa-robot' },
+    { name: 'Home', href: '/', icon: 'fa-house', new_page: false },
+    { name: 'Commands', href: '/commands', icon: 'fa-terminal', new_page: false },
+    { name: 'Premium', href: '/premium', icon: 'fa-crown', new_page: false },
+    { name: 'Invite Bot!', href: 'https://discord.com/api/oauth2/authorize?client_id=729046239181668397&permissions=139586817088&scope=bot%20applications.commands', icon: 'fa-robot', new_page: true },
   ];
 
   useEffect(() => {
@@ -99,7 +99,9 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           <NavbarContent justify="start" className="hidden sm:flex gap-4">
             {menuItems.map((item, index) => (
               <NavbarItem key={index} className={(item.href === path ? 'current-page ' : '') + (item.href === '/premium' ? 'premium-user ' : '')}>
-                <Link href={item.href} color="foreground">
+                <Link
+                isExternal = {item.new_page}
+                href={item.href} color="foreground">
                   <span className={`fa-solid ${item.icon}`}></span>
                   <span style={{ marginLeft: '8px' }}>{item.name}</span>
                 </Link>
@@ -135,7 +137,9 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           <NavbarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
             {menuItems.map((item, index) => (
               <NavbarMenuItem key={index} className={item.href === path ? 'current-page' : ''}>
-                <Link href={item.href} color="foreground" className={"w-full "+(item.href === path ? 'current-page ' : '') + (item.href === '/premium' ? 'premium-user ' : '')}>
+                <Link 
+                 isExternal = {item.new_page}
+                href={item.href} color="foreground" className={"w-full "+(item.href === path ? 'current-page ' : '') + (item.href === '/premium' ? 'premium-user ' : '')}>
                   <span className={`fa-solid ${item.icon}`}></span>
                   <span style={{ marginLeft: '8px' }}>{item.name}</span>
                 </Link>
