@@ -24,6 +24,8 @@ const PremiumPage = () => {
           </h1>
         ) : (
           <a
+            target="_blank"
+            rel="noopener noreferrer"
             href="/api/buy-premium-redirect"
             className="inline-block px-8 py-4 text-xl text-white font-extrabold bg-green-700 rounded-lg shadow-md hover:bg-green-800 transform transition-transform duration-300 hover:scale-105 pulse-button"
           >
