@@ -74,7 +74,7 @@ const TopBlock = () => {
   }, []);
 
   return (
-    <div className="darker-block inline-container header">
+    <div className="darker-block inline-container header" style={{paddingTop:'64px'}}>
       <div style={{ marginLeft: '20px' }}>
         <div style={{ display: 'flex' }}>
           <div
