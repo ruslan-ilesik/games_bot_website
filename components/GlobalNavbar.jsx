@@ -75,6 +75,7 @@ const GlobalNavbar = ({ navbarSizeRef }) => {
           width: '100vw',
           transition: 'transform 0.3s ease',
           transform: isNavbarVisible ? 'translateY(0)' : 'translateY(-100%)',
+          position: 'fixed',
         }}
         fixed="top"
         maxWidth="full"
